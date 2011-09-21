@@ -14,33 +14,50 @@ namespace mediaRetriever
     public interface interfaceMediaService
     {
         [OperationContract]
-        int add(int num1, int num2);
+        string[] retrieveList();
 
+        [OperationContract]
+        void addWatchFolder(string path);
+        
     };
 
     // class to be called from accessing web apps
     public class MediaService : interfaceMediaService
     {
-        //Function Name: add
-        //Purpose: Return integer value of 2 input integers that have been added
+        //Function Name: retrieveList
+        //Purpose: Report the current list of media that can be viewed
 
-        public int add(int num1, int num2)
+        public string[] retrieveList()
         {
-            int result = num1 + num2;
-            Console.WriteLine("Received Add request: " + num1 + ", " + num2);
-            Console.WriteLine("Returning: " + result);
-            return result;
+            string[] mediaList =  new string[10];
+
+            mediaList[0] = "working";
+
+
+            Console.WriteLine("Returning media list.");
+            return mediaList;
+        }
+
+        //Function Name: addWatchFolder
+        //Purpose: Add a folder to be monitored by the server for media 
+
+        public void addWatchFolder(string path)
+        {
+            //update watch list
         }
 
     }
 
     class Program
     {
+
+        public string[] mediaList;
+
         static void Main(string[] args)
         {
 
             // setup listening address for WCF
-            Uri baseAddress = new Uri("http://localhost:8000/PSBadder");
+            Uri baseAddress = new Uri("http://localhost:8000/mediaService");
             ServiceHost adderHost = new ServiceHost(typeof(MediaService), baseAddress);
 
             try
@@ -66,7 +83,7 @@ namespace mediaRetriever
 
             // open host and wait for connections
             adderHost.Open();
-            Console.WriteLine("Add Subtract service is ready.");
+            Console.WriteLine("Media service is ready.");
             Console.WriteLine("Press <ENTER> to terminate service operation.");
             Console.WriteLine();
             Console.ReadLine();
