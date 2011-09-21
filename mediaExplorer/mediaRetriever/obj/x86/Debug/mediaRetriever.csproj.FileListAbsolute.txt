@@ -1,0 +1,7 @@
+F:\projects\mediaMaker\mediaRetriever\mediaRetriever\obj\x86\Debug\ResolveAssemblyReference.cache
+F:\projects\mediaMaker\mediaRetriever\mediaRetriever\bin\Debug\mediaRetriever.exe
+F:\projects\mediaMaker\mediaRetriever\mediaRetriever\bin\Debug\mediaRetriever.pdb
+F:\projects\mediaMaker\mediaRetriever\mediaRetriever\obj\x86\Debug\mediaRetriever.exe
+F:\projects\mediaMaker\mediaRetriever\mediaRetriever\obj\x86\Debug\mediaRetriever.pdb
+F:\projects\mediaExplorer\mediaExplorer\mediaRetriever\obj\x86\Debug\mediaRetriever.exe
+F:\projects\mediaExplorer\mediaExplorer\mediaRetriever\obj\x86\Debug\mediaRetriever.pdb
