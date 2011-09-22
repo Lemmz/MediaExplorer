@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.ServiceModel;
 using System.ServiceModel.Description;
+using System.IO;
+using System.Xml;
 
 
 
@@ -14,7 +16,7 @@ namespace mediaRetriever
     public interface interfaceMediaService
     {
         [OperationContract]
-        string[] retrieveList();
+        XmlDocument retrieveList();
 
         [OperationContract]
         void addWatchFolder(string path);
@@ -24,22 +26,23 @@ namespace mediaRetriever
     // class to be called from accessing web apps
     public class MediaService : interfaceMediaService
     {
+        public string watchList = "folderWatchlist.xml";
+
         //Function Name: retrieveList
         //Purpose: Report the current list of media that can be viewed
 
-        public string[] retrieveList()
+        public XmlDocument retrieveList()
         {
-            string[] mediaList =  new string[10];
-
-            mediaList[0] = "working";
-
-
             Console.WriteLine("Returning media list.");
+
+            XmlDocument mediaList = new XmlDocument();
+            mediaList.LoadXml(watchList);
+
             return mediaList;
         }
 
         //Function Name: addWatchFolder
-        //Purpose: Add a folder to be monitored by the server for media 
+        //Purpose: Add a folder to be monitored by the server for media
 
         public void addWatchFolder(string path)
         {
@@ -50,8 +53,7 @@ namespace mediaRetriever
 
     class Program
     {
-
-        public string[] mediaList;
+        public string watchList = "folderWatchlist.xml";
 
         static void Main(string[] args)
         {
@@ -91,6 +93,11 @@ namespace mediaRetriever
             // Close the ServiceHostBase to shutdown the service.
             adderHost.Close();
 
+        }
+
+        public void listInit()
+        {
+             
         }
     }
 }
